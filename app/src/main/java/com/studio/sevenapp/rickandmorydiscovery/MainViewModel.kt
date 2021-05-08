@@ -1,9 +1,6 @@
 package com.studio.sevenapp.rickandmorydiscovery
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.studio.sevenapp.data.service.CharacterService
 import com.studio.sevenapp.domain.character.CharacterUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.GlobalScope
@@ -17,9 +14,6 @@ constructor(
     private val characterUseCase: CharacterUseCase
 ) : ViewModel() {
 
-    private val countCharacterLv = MutableLiveData<Int>()
-    fun getCountCharacter(): LiveData<Int> = countCharacterLv
-
     fun load() {
         GlobalScope.launch {
             getData()
@@ -28,11 +22,10 @@ constructor(
 
     private suspend fun getData() {
 
-        val character = characterUseCase.getCharacters()
+        val characterList = characterUseCase.getCharacters()
+        val characterInDetail = characterUseCase.getCharacterInDetail(characterList.last().id)
 
-        countCharacterLv.postValue(
-            character.size
-        )
+        println("last Character name: ${characterInDetail.name}")
 
     }
 }

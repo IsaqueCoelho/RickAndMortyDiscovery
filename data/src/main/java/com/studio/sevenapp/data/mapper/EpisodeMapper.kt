@@ -8,7 +8,8 @@ class EpisodeMapper : DomainMapper<EpisodeDto, Episode> {
         return Episode(
             id = dto.id,
             name = dto.name,
-            episodeCode = dto.episodeCode
+            episodeCode = dto.episodeCode,
+            airDate = dto.airDate
         )
     }
 
@@ -16,7 +17,8 @@ class EpisodeMapper : DomainMapper<EpisodeDto, Episode> {
         return EpisodeDto(
             id = domainModel.id,
             name = domainModel.name,
-            episodeCode = domainModel.episodeCode
+            episodeCode = domainModel.episodeCode,
+            airDate = domainModel.airDate
         )
     }
 

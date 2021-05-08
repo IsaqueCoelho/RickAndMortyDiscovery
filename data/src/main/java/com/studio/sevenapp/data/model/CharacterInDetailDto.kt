@@ -1,16 +1,18 @@
 package com.studio.sevenapp.data.model
 
+import com.google.gson.annotations.SerializedName
+
 class CharacterInDetailDto(
     id: Int,
     name: String,
     status: String,
-    val species: String,
-    val type: String,
-    val gender: String,
-    val origin: LocationDto,
-    val location: LocationDto,
+    @SerializedName("species") val species: String,
+    @SerializedName("type") val type: String,
+    @SerializedName("gender") val gender: String,
+    @SerializedName("origin") val origin: LocationDto,
+    @SerializedName("location") val location: LocationDto,
     image: String,
-    val episodes: List<EpisodeDto>
+    @SerializedName("episode") val episodes: List<EpisodeDto>
 ) :
     CharacterDto(
         id = id, name = name, status = status, image = image

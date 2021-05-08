@@ -1,6 +1,9 @@
 package com.studio.sevenapp.data.mapper
 
 import android.annotation.SuppressLint
+import com.google.gson.Gson
+import com.google.gson.JsonParser
+import com.google.gson.reflect.TypeToken
 import com.studio.sevenapp.data.model.CharacterInDetailDto
 import com.studio.sevenapp.domain.model.CharacterInDetail
 import com.studio.sevenapp.domain.model.GenderEnum
@@ -8,7 +11,8 @@ import com.studio.sevenapp.domain.model.StatusEnum
 
 class CharacterInDetailMapper(
     private val locationMapper: LocationMapper,
-    private val episodeMapper: EpisodeMapper
+    private val episodeMapper: EpisodeMapper,
+    private val gson: Gson
 ) : DomainMapper<CharacterInDetailDto, CharacterInDetail> {
 
     @SuppressLint("DefaultLocale")
@@ -40,5 +44,19 @@ class CharacterInDetailMapper(
             image = domainModel.image,
             episodes = domainModel.episodes.let { episodeMapper.fromDomainData(it) }
         )
+    }
+
+    fun fromStringJsonToDto(json: String): CharacterInDetailDto {
+
+        val jsonObject = JsonParser.parseString(json).asJsonObject
+
+        val jsonArray = jsonObject
+            .getAsJsonObject("data")
+            .getAsJsonObject("character")
+            .toString()
+
+        val listType = object : TypeToken<CharacterInDetailDto>() {}.type
+
+        return gson.fromJson(jsonArray, listType)
     }
 }

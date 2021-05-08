@@ -29,11 +29,13 @@ object MapperModule {
     @Provides
     fun provideCharacterInDetailMapper(
         locationMapper: LocationMapper,
-        episodeMapper: EpisodeMapper
+        episodeMapper: EpisodeMapper,
+        gson: Gson
     ): CharacterInDetailMapper {
         return CharacterInDetailMapper(
             locationMapper = locationMapper,
-            episodeMapper = episodeMapper
+            episodeMapper = episodeMapper,
+            gson = gson
         )
     }
 

@@ -1,8 +1,10 @@
 package com.studio.sevenapp.data.repository
 
 import com.google.gson.JsonObject
+import com.studio.sevenapp.data.mapper.CharacterInDetailMapper
 import com.studio.sevenapp.data.mapper.CharacterMapper
 import com.studio.sevenapp.data.service.CharacterService
+import com.studio.sevenapp.domain.character.BodyQueryEnum
 import com.studio.sevenapp.domain.character.CharacterRepository
 import dagger.Module
 import dagger.Provides
@@ -47,13 +49,15 @@ object RepositoryModule {
         characterService: CharacterService,
         jsonObject: JsonObject,
         mediaType: MediaType,
-        characterMapper: CharacterMapper
+        characterMapper: CharacterMapper,
+        characterInDetailMapper: CharacterInDetailMapper
     ): CharacterRepository {
         return CharacterRepositoryImpl(
             characterService = characterService,
             jsonObject = jsonObject,
             mediaType = mediaType,
-            mapper = characterMapper
+            characterMapper = characterMapper,
+            characterInDetailMapper = characterInDetailMapper
         )
     }
 }

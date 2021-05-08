@@ -1,8 +1,10 @@
 package com.studio.sevenapp.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class LocationDto(
-    val id: Int,
-    val name: String,
-    val type: String,
-    val dimension: String
+    @SerializedName("id") val id: Int,
+    @SerializedName("name") val name: String,
+    @SerializedName("type") val type: String,
+    @SerializedName("dimension") val dimension: String
 )
