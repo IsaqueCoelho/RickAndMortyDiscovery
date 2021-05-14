@@ -1,4 +1,4 @@
-package com.studio.sevenapp.rickandmorydiscovery
+package com.studio.sevenapp.rickandmorydiscovery.ui.base
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

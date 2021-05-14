@@ -64,6 +64,8 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
 
+    implementation("androidx.fragment:fragment-ktx:1.3.3")
+
     implementation("com.google.dagger:hilt-android:2.31-alpha")
     kapt("com.google.dagger:hilt-android-compiler:2.31-alpha")
 
@@ -77,7 +79,10 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
-    testImplementation("junit:junit:4.+")
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+
+    testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:${rootProject.extra["compose_version"]}")

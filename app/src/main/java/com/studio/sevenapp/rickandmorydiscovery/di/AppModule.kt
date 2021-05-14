@@ -1,7 +1,7 @@
 package com.studio.sevenapp.rickandmorydiscovery.di
 
 import android.content.Context
-import com.studio.sevenapp.rickandmorydiscovery.BaseApplication
+import com.studio.sevenapp.rickandmorydiscovery.ui.base.BaseApplication
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
