@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/characterListFragment">
+
+    <fragment
+        android:id="@+id/characterListFragment"
+        android:name="com.studio.sevenapp.rickandmorydiscovery.ui.CharacterListFragment"
+        android:label="CharacterListFragment" >
+        <action
+            android:id="@+id/action_characterListFragment_to_characterDetail"
+            app:destination="@id/characterDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetail"
+        android:name="com.studio.sevenapp.rickandmorydiscovery.ui.CharacterDetail"
+        android:label="CharacterDetail" />
+</navigation>

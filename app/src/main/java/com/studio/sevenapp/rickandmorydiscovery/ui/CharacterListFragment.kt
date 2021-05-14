@@ -9,6 +9,8 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import com.studio.sevenapp.rickandmorydiscovery.R
 import com.studio.sevenapp.rickandmorydiscovery.components.CharacterCard
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,7 +35,9 @@ class CharacterListFragment : Fragment() {
                     ) { index, character ->
                         CharacterCard(
                             character = character,
-                            onClick = {}
+                            onClick = {
+                                findNavController().navigate(R.id.characterDetail)
+                            }
                         )
                     }
                 }
