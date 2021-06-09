@@ -12,7 +12,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 
-class CharacterDetail : Fragment() {
+class CharacterDetailFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,11 +21,13 @@ class CharacterDetail : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
 
+            val characterId = arguments?.getInt("characterId")
+
             setContent {
                 Column(
                     modifier = Modifier.padding(8.dp)
                 ) {
-                    Text(text = "Character Detail")
+                    Text(text = "Character Detail of $characterId")
                 }
 
             }

@@ -10,10 +10,19 @@
         android:label="CharacterListFragment" >
         <action
             android:id="@+id/action_characterListFragment_to_characterDetail"
-            app:destination="@id/characterDetail" />
+            app:destination="@id/characterDetail" >
+            <argument
+                android:name="characterId"
+                android:defaultValue="0" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/characterDetail"
-        android:name="com.studio.sevenapp.rickandmorydiscovery.ui.CharacterDetail"
-        android:label="CharacterDetail" />
+        android:name="com.studio.sevenapp.rickandmorydiscovery.ui.CharacterDetailFragment"
+        android:label="CharacterDetail">
+        <argument
+            android:name="characterId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>

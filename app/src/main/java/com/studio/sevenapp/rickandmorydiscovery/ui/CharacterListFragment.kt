@@ -11,6 +11,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -45,7 +46,8 @@ class CharacterListFragment : Fragment() {
                             CharacterCard(
                                 character = character,
                                 onClick = {
-                                    findNavController().navigate(R.id.characterDetail)
+                                    val bundle = bundleOf("characterId" to character.id)
+                                    findNavController().navigate(R.id.characterDetail, bundle)
                                 }
                             )
                         }
