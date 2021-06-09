@@ -1,4 +1,4 @@
-package com.studio.sevenapp.rickandmorydiscovery.components
+package com.studio.sevenapp.rickandmorydiscovery.ui.components
 
 import android.annotation.SuppressLint
 import android.graphics.Bitmap

@@ -1,3 +1,7 @@
 <resources>
+    <!-- GENERAL -->
     <string name="app_name">RickAndMoryDiscovery</string>
+
+    <!-- CATALOG -->
+    <string name="catalog_card_status_label">Status:</string>
 </resources>
