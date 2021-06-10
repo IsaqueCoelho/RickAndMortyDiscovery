@@ -11,26 +11,38 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CharacterDetailFragment : Fragment() {
+
+    private val viewModel: CharacterDetailViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        getCharacterDetailsByID()
+
         return ComposeView(requireContext()).apply {
-
-            val characterId = arguments?.getInt("characterId")
-
             setContent {
+
+                val character = viewModel.characterMs.value
+
                 Column(
                     modifier = Modifier.padding(8.dp)
                 ) {
-                    Text(text = "Character Detail of $characterId")
+                    Text(text = "Character Detail of ${character?.name}")
                 }
-
             }
         }
+    }
+
+    private fun getCharacterDetailsByID() {
+        val characterId = arguments?.getInt("characterId")
+        viewModel.requestCharacterDetails(characterId)
     }
 }
