@@ -1,4 +1,4 @@
-package com.studio.sevenapp.rickandmorydiscovery.ui
+package com.studio.sevenapp.rickandmorydiscovery.ui.list
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -20,16 +20,13 @@ constructor(
 
     init {
         viewModelScope.launch {
-            getData()
+            getCharacterList()
         }
     }
 
-    private suspend fun getData() {
+    private suspend fun getCharacterList() {
 
         val characterList = characterUseCase.getCharacters()
-        val characterInDetail = characterUseCase.getCharacterInDetail(characterList.last().id)
-
-        println("last Character name: ${characterInDetail.name}")
 
         characterListMs.value = characterList.map { character ->
             PCharacter(

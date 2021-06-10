@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/characterListFragment"
-        android:name="com.studio.sevenapp.rickandmorydiscovery.ui.CharacterListFragment"
+        android:name="com.studio.sevenapp.rickandmorydiscovery.ui.list.CharacterListFragment"
         android:label="CharacterListFragment" >
         <action
             android:id="@+id/action_characterListFragment_to_characterDetail"
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/characterDetail"
-        android:name="com.studio.sevenapp.rickandmorydiscovery.ui.CharacterDetailFragment"
+        android:name="com.studio.sevenapp.rickandmorydiscovery.ui.detail.CharacterDetailFragment"
         android:label="CharacterDetail">
         <argument
             android:name="characterId"

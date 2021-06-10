@@ -1,4 +1,4 @@
-package com.studio.sevenapp.rickandmorydiscovery.ui
+package com.studio.sevenapp.rickandmorydiscovery.ui.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
