@@ -1,6 +1,6 @@
-package com.studio.sevenapp.domain.model
+package com.studio.sevenapp.rickandmorydiscovery.model
 
-open class Episode(
+data class PEpisode(
     val id: Int,
     val name: String,
     val episodeCode: String,
