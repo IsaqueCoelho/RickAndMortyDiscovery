@@ -1,33 +1,26 @@
 package com.studio.sevenapp.domain.di
 
-import com.studio.sevenapp.domain.character.CharacterRepository
 import com.studio.sevenapp.domain.character.CharacterUseCase
 import com.studio.sevenapp.domain.character.CharacterUseCaseImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import dagger.hilt.android.components.ActivityRetainedComponent
 
 @Module
-@InstallIn(SingletonComponent::class)
-object DomainModule {
+@InstallIn(ActivityRetainedComponent::class)
+abstract class DomainModule {
 
-    @Singleton
-    @Provides
-    fun provideCharacterUseCase(
-        characterRepository: CharacterRepository
-    ): CharacterUseCase {
-        return CharacterUseCaseImpl(
-            characterRepository = characterRepository
-        )
-    }
+    @Binds
+    abstract fun bindCharacterUseCase(
+        characterUseCaseImpl: CharacterUseCaseImpl
+    ): CharacterUseCase
 
-    fun provideStringTest(): String{
+    fun provideStringTest(): String {
         return "query 1"
     }
 
-    fun provideStringTest2(): String{
+    fun provideStringTest2(): String {
         return "query 1"
     }
 }
