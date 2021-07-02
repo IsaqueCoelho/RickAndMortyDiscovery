@@ -1,8 +1,6 @@
 package com.studio.sevenapp.rickandmorydiscovery.ui.detail
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.studio.sevenapp.domain.character.CharacterUseCase
@@ -10,7 +8,6 @@ import com.studio.sevenapp.rickandmorydiscovery.mapper.PCharacterInDetailMapper
 import com.studio.sevenapp.rickandmorydiscovery.model.PCharacterInDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import okhttp3.internal.notify
 import javax.inject.Inject
 
 @HiltViewModel

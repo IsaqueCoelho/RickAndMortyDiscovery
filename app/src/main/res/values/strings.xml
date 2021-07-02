@@ -4,4 +4,11 @@
 
     <!-- CATALOG -->
     <string name="catalog_card_status_label">Status:</string>
+
+    <!-- DETAIL -->
+    <string name="detail_header">Details</string>
+
+    <string name="detail_episodes">Showed in:</string>
+    <string name="detail_location">Location: </string>
+    <string name="label_back">Back</string>
 </resources>
