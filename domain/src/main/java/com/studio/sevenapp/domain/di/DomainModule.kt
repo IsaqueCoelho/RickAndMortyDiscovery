@@ -16,11 +16,4 @@ abstract class DomainModule {
         characterUseCaseImpl: CharacterUseCaseImpl
     ): CharacterUseCase
 
-    fun provideStringTest(): String {
-        return "query 1"
-    }
-
-    fun provideStringTest2(): String {
-        return "query 1"
-    }
 }
