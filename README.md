@@ -5,7 +5,7 @@ Rick and Morty is an American adult animated science fiction sitcom created by J
 
 Supported by resources created from Rick and Morty fanbase I created this repository to study some insteresting resources 
 
-###### Resources 
+**Resources**
  - (view) JetPack Compose: https://developer.android.com/jetpack/compose
  - (dependency injection) Hilt: https://developer.android.com/training/dependency-injection/hilt-android
  - (backend) RickAndMorty API GraphQL: https://rickandmortyapi.com/
@@ -17,15 +17,17 @@ Rick and Morty (em português Rick e Morty) é uma série de animação adulta n
 
 Inspirado nos recursos disponíveis criados pela fanbase desse seriado de sucesso, criei esse repositório com essa temática para estudar alguns recursos interesantes como jetpack compose, injeção de dependencia Hilt e requisições GraphQl
 
-###### Recursos 
+**Recursos** 
  - (visual) JetPack Compose: https://developer.android.com/jetpack/compose
  - (injeção de dependencias) Hilt: https://developer.android.com/training/dependency-injection/hilt-android
  - (backend) RickAndMorty API GraphQL: https://rickandmortyapi.com/
 
 
+**Um pouco mais sobre Hilt**
+
+[Confira também esse slide que montei para apresentar o HILT de forma mais resumida baseado na minha experiencia com esse projeto](https://docs.google.com/presentation/d/1F0wzTb3zCaqlE6zAxiT-OKtAJxZPil0-/edit?usp=sharing&ouid=117472478970556957111&rtpof=true&sd=true)
 
 ## Demo
-
 
 <p>
   <img src="https://github.com/IsaqueCoelho/RickAndMoryDiscover/blob/main/readme/lightmode.gif?raw=true!" alt="No gif é exibido a tela do app que tem uma lista de itens e essa lista de itens em pares, ou seja, para cada linha tem 2 itens. Cada item tem a forma quadrada exibindo uma image de um personagem do desenho e abaixo da imagem tem o nome do personagem e abaixo do nome o status que pode ser Alive, Dead e unknow. No gif o usuário faz a rolagem para baixo para mostra que tem mais itens e em seguida sobe pro topo da lista e clica sobre o segundo item. Com o clique o usuário é redirecionado para outra tela que mosta mais detalhes do personagem selecionado tais como lugares vistos e lista de episódios que apareceu" width="350"/>
