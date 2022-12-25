@@ -28,6 +28,7 @@ fun CharacterCard(
     character: PCharacter,
     onClick: () -> Unit,
 ) {
+    val statusCharaterLabel = stringResource(id = R.string.catalog_card_status_label)
     Card(
         shape = MaterialTheme.shapes.medium,
         modifier = Modifier
@@ -73,7 +74,7 @@ fun CharacterCard(
                         withStyle(
                             style = SpanStyle(fontWeight = FontWeight.Bold)
                         ) {
-                            append(stringResource(id = R.string.catalog_card_status_label))
+                            append(statusCharaterLabel)
                         }
                         append(" ${character.status.value}")
                     }

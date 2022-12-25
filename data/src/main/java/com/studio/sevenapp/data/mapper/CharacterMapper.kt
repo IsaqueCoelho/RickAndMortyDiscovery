@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken
 import com.studio.sevenapp.data.model.CharacterDto
 import com.studio.sevenapp.domain.model.Character
 import com.studio.sevenapp.domain.model.StatusEnum
+import java.util.*
 
 class CharacterMapper(
     private val gson: Gson
@@ -17,7 +18,7 @@ class CharacterMapper(
         return Character(
             id = dto.id,
             name = dto.name,
-            status = StatusEnum.valueOf(dto.status.toUpperCase()),
+            status = StatusEnum.valueOf(dto.status.uppercase(Locale.getDefault())),
             image = dto.image
         )
     }

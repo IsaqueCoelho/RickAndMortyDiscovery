@@ -8,6 +8,7 @@ import com.studio.sevenapp.data.model.CharacterInDetailDto
 import com.studio.sevenapp.domain.model.CharacterInDetail
 import com.studio.sevenapp.domain.model.GenderEnum
 import com.studio.sevenapp.domain.model.StatusEnum
+import java.util.*
 
 class CharacterInDetailMapper(
     private val locationMapper: LocationMapper,
@@ -20,10 +21,10 @@ class CharacterInDetailMapper(
         return CharacterInDetail(
             id = dto.id,
             name = dto.name,
-            status = StatusEnum.valueOf(dto.status.toUpperCase()),
+            status = StatusEnum.valueOf(dto.status.uppercase(Locale.getDefault())),
             species = dto.species,
             type = dto.type,
-            gender = GenderEnum.valueOf(dto.gender.toUpperCase()),
+            gender = GenderEnum.valueOf(dto.gender.uppercase(Locale.getDefault())),
             origin = locationMapper.mapToDomainModel(dto.location),
             location = locationMapper.mapToDomainModel(dto.location),
             image = dto.image,

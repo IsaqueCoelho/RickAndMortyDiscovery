@@ -2,17 +2,16 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
     buildToolsVersion = "30.0.3"
 
     defaultConfig {
         minSdk = 27
-        targetSdk = 30
-        versionCode = 1
-        versionName = "1.0"
+        targetSdk = 31
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -41,8 +40,8 @@ dependencies {
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
 
-    implementation("com.google.dagger:hilt-android:2.31-alpha")
-    kapt("com.google.dagger:hilt-android-compiler:2.31-alpha")
+    implementation("com.google.dagger:hilt-android:2.42")
+    kapt("com.google.dagger:hilt-android-compiler:2.42")
 
     implementation("com.google.code.gson:gson:2.8.6")
 
