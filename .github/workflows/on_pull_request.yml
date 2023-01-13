@@ -36,12 +36,12 @@ jobs:
       - name: Build all artifacts
         id: buildAllApks
         uses: eskatos/gradle-command-action@v1.3.3
-          with:
-            gradle-version: current
-            wrapper-cache-enabled: true
-            dependencies-cache-enabled: true
-            configuration-cache-enabled: true
-            arguments: assembleDebug
+        with:
+          gradle-version: current
+          wrapper-cache-enabled: true
+          dependencies-cache-enabled: true
+          configuration-cache-enabled: true
+          arguments: assembleDebug
 
       # Runs a set of commands using gradle
       - name: Run unit tests
