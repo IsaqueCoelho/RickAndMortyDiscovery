@@ -45,4 +45,4 @@ jobs:
 
       # Runs a set of commands using gradle
       - name: Run unit tests
-        run: ./gradlew testStagingDebugUnitTest
+        run: ./gradlew test
