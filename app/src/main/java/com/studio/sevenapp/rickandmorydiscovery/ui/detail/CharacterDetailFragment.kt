@@ -12,7 +12,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -21,7 +21,6 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Constraints
@@ -126,7 +125,7 @@ class CharacterDetailFragment : Fragment() {
                 )
         ) {
             Icon(
-                imageVector = Icons.Outlined.ArrowBack,
+                imageVector = Icons.AutoMirrored.Outlined.ArrowBack,
                 tint = Yellow200,
                 contentDescription = "Back"
             )
@@ -146,8 +145,8 @@ class CharacterDetailFragment : Fragment() {
         val offset = (maxOffset - scroll).coerceAtLeast(minOffset)
 
         val genderAndSpecie: String = when {
-            specie.isNotEmpty() -> gender.value.capitalize(Locale.getDefault()) + " | $specie"
-            else -> gender.value.capitalize(Locale.getDefault())
+            specie.isNotEmpty() -> gender.value.capitalizeFirst() + " | $specie"
+            else -> gender.value.capitalizeFirst()
         }
 
         Column(
@@ -171,7 +170,7 @@ class CharacterDetailFragment : Fragment() {
             )
             Spacer(Modifier.height(4.dp))
             Text(
-                text = status.value.capitalize(Locale.getDefault()),
+                text = status.value.capitalizeFirst(),
                 style = Typography.h6,
                 modifier = HzPadding
             )
@@ -360,3 +359,6 @@ class CharacterDetailFragment : Fragment() {
         }
     }
 }
+
+private fun String.capitalizeFirst(locale: Locale = Locale.getDefault()): String =
+    replaceFirstChar { if (it.isLowerCase()) it.titlecase(locale) else it.toString() }

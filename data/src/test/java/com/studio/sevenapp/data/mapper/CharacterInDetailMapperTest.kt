@@ -1,5 +1,6 @@
 package com.studio.sevenapp.data.mapper
 
+import com.google.gson.Gson
 import com.studio.sevenapp.data.model.CharacterInDetailDto
 import com.studio.sevenapp.data.model.EpisodeDto
 import com.studio.sevenapp.data.model.LocationDto
@@ -30,7 +31,8 @@ class CharacterInDetailMapperTest {
         characterInDetailMapper = spyk(
             CharacterInDetailMapper(
                 locationMapper = locationMapper,
-                episodeMapper = episodeMapper
+                episodeMapper = episodeMapper,
+                gson = Gson()
             )
         )
     }
@@ -98,13 +100,15 @@ class CharacterInDetailMapperTest {
         val FAKE_EPISODE_DTO = EpisodeDto(
             id = 1,
             name = "Pilot",
-            episodeCode = "S0101"
+            episodeCode = "S0101",
+            airDate = "December 2, 2013"
         )
 
         val FAKE_EPISODE_DOMAIN = Episode(
             id = 1,
             name = "Pilot",
-            episodeCode = "S0101"
+            episodeCode = "S0101",
+            airDate = "December 2, 2013"
         )
 
         val FAKE_EPISODE_DTO_LIST = listOf<EpisodeDto>(
