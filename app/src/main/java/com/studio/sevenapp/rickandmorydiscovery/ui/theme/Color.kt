@@ -4,41 +4,45 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 
 /**
- * Raw brand palette — the "Interdimensional Portal" identity. These are mode-independent
- * primitives; semantic meaning is assigned by [RmColors] below, which has a light and a dark set.
+ * Brand palette derived from the supplied five-swatch palette:
+ * cocoa · peach · lemon · lime · orchid. These are mode-independent primitives; semantic meaning is
+ * assigned by [RmColors] below, which has a light and a dark set.
  */
 
-// Portal / brand
-val PortalGreen = Color(0xFF97CE4C)
-val PortalGreenBright = Color(0xFFB6F36A)
-val PortalGreenDeep = Color(0xFF3DA35D)
-val PortalCyan = Color(0xFF24D0CB)
-val PortalCyanDeep = Color(0xFF0E8F8A)
-val Plumbus = Color(0xFFF2A0B5)
+// The five source swatches
+val Cocoa = Color(0xFF3E2A1E)   // deep brown
+val Peach = Color(0xFFE2AA8B)   // warm tan
+val Lemon = Color(0xFFEEE150)   // yellow
+val Lime = Color(0xFF93CE55)    // green (portal)
+val Orchid = Color(0xFFE4A1CE)  // pink (plumbus)
 
-// Status
-val AliveGreen = Color(0xFF6FE08A)
-val AliveGreenDark = Color(0xFF2FA85B)
-val DeadRed = Color(0xFFFF6B6B)
-val DeadRedDark = Color(0xFFD64545)
-val UnknownAmber = Color(0xFFE0B23C)
-val UnknownAmberDark = Color(0xFFB8860B)
+// Derived lime / orchid shades for fills, glows and on-light contrast
+val LimeBright = Color(0xFFB6E86F)
+val LimeDeep = Color(0xFF5FA336)
+val OrchidDeep = Color(0xFFC56FA8)
+val PeachDeep = Color(0xFFC9784E)
 
-// Deep-space neutrals (dark mode)
-val Space900 = Color(0xFF0A0F14)
-val Space700 = Color(0xFF131C24)
-val Space600 = Color(0xFF1B2730)
-val Space500 = Color(0xFF26343C)
-val MintWhite = Color(0xFFE6F0EA)
-val MintMuted = Color(0xFF9DB2A8)
+// Cocoa-based espresso neutrals (dark mode)
+val CocoaDeep = Color(0xFF241710)
+val CocoaSurface = Color(0xFF33241A)
+val CocoaSurfaceVariant = Color(0xFF45331F)
+val CocoaOutline = Color(0xFF4F3B2A)
+val Cream = Color(0xFFF4E9DF)
+val CreamMuted = Color(0xFFC4AD99)
 
-// Daylight neutrals (light mode)
-val Light100 = Color(0xFFF4F7F4)
-val Light0 = Color(0xFFFFFFFF)
-val LightSurfaceVariant = Color(0xFFE7EFE8)
-val LightOutline = Color(0xFFD6E0D8)
-val InkGreen = Color(0xFF15211C)
-val InkMuted = Color(0xFF5B6B63)
+// Warm daylight neutrals (light mode)
+val Linen = Color(0xFFFBF4EC)
+val White = Color(0xFFFFFFFF)
+val LinenSurfaceVariant = Color(0xFFF3E7DA)
+val LinenOutline = Color(0xFFE7D6C6)
+val InkMuted = Color(0xFF7A6555)
+
+// Status — alive (lime) and unknown (lemon) come straight from the palette; dead is a warm
+// terracotta red kept in the cocoa/peach family so it harmonises with the rest.
+val DeadCoral = Color(0xFFE0705A)
+val DeadCoralDark = Color(0xFFC2452F)
+val UnknownLemonDark = Color(0xFFB58A12)
+val AliveLimeDark = Color(0xFF4FA838)
 
 /**
  * Semantic color tokens. Components read these via `RmTheme.colors.*` so the same code renders
@@ -64,37 +68,37 @@ data class RmColors(
 )
 
 val DarkRmColors = RmColors(
-    background = Space900,
-    surface = Space700,
-    surfaceVariant = Space600,
-    onBackground = MintWhite,
-    onSurface = MintWhite,
-    onSurfaceVariant = MintMuted,
-    outline = Space500,
-    primary = PortalGreen,
-    primaryGlow = PortalGreenBright,
-    accent = PortalCyan,
-    onPrimary = Space900,
-    alive = AliveGreen,
-    dead = DeadRed,
-    unknown = UnknownAmber,
+    background = CocoaDeep,
+    surface = CocoaSurface,
+    surfaceVariant = CocoaSurfaceVariant,
+    onBackground = Cream,
+    onSurface = Cream,
+    onSurfaceVariant = CreamMuted,
+    outline = CocoaOutline,
+    primary = Lime,
+    primaryGlow = LimeBright,
+    accent = Orchid,
+    onPrimary = CocoaDeep,
+    alive = Lime,
+    dead = DeadCoral,
+    unknown = Lemon,
     isDark = true
 )
 
 val LightRmColors = RmColors(
-    background = Light100,
-    surface = Light0,
-    surfaceVariant = LightSurfaceVariant,
-    onBackground = InkGreen,
-    onSurface = InkGreen,
+    background = Linen,
+    surface = White,
+    surfaceVariant = LinenSurfaceVariant,
+    onBackground = Cocoa,
+    onSurface = Cocoa,
     onSurfaceVariant = InkMuted,
-    outline = LightOutline,
-    primary = PortalGreenDeep,
-    primaryGlow = PortalGreen,
-    accent = PortalCyanDeep,
-    onPrimary = Light0,
-    alive = AliveGreenDark,
-    dead = DeadRedDark,
-    unknown = UnknownAmberDark,
+    outline = LinenOutline,
+    primary = LimeDeep,
+    primaryGlow = Lime,
+    accent = OrchidDeep,
+    onPrimary = White,
+    alive = AliveLimeDark,
+    dead = DeadCoralDark,
+    unknown = UnknownLemonDark,
     isDark = false
 )
