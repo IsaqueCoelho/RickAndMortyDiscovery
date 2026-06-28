@@ -1,5 +1,6 @@
 package com.studio.sevenapp.data.mapper
 
+import com.google.gson.Gson
 import com.studio.sevenapp.data.model.CharacterDto
 import com.studio.sevenapp.domain.model.Character
 import com.studio.sevenapp.domain.model.StatusEnum
@@ -10,7 +11,7 @@ import org.junit.Test
 class CharacterMapperTest {
 
     private val characterMapper: CharacterMapper = spyk(
-        CharacterMapper()
+        CharacterMapper(gson = Gson())
     )
 
     @Test

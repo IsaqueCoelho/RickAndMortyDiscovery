@@ -20,16 +20,23 @@ constructor(
 
     val characterMs = mutableStateOf<PCharacterInDetail?>(null)
 
+    /** Transient user-facing message (e.g. shown when the API rate-limits us). */
+    val userMessage = mutableStateOf<String?>(null)
+
+    fun clearMessage() {
+        userMessage.value = null
+    }
+
     fun requestCharacterDetails(characterId: Int?) {
         characterId ?: return
 
         viewModelScope.launch {
-            getCharacterDetails(characterId)
+            try {
+                val characterInDetail = characterUseCase.getCharacterInDetail(characterId)
+                characterMs.value = pCharacterInDetailMapper.mapToPresentationModel(characterInDetail)
+            } catch (throwable: Throwable) {
+                userMessage.value = "Espere um pouco para carregar mais informações"
+            }
         }
-    }
-
-    private suspend fun getCharacterDetails(characterId: Int) {
-        val characterInDetail = characterUseCase.getCharacterInDetail(characterId)
-        characterMs.value = pCharacterInDetailMapper.mapToPresentationModel(characterInDetail)
     }
 }

@@ -33,20 +33,19 @@ import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import com.studio.sevenapp.rickandmorydiscovery.ui.theme.Black900
-import com.studio.sevenapp.rickandmorydiscovery.ui.theme.Yellow500
+import com.studio.sevenapp.rickandmorydiscovery.ui.theme.RmTheme
 import kotlin.math.ln
 
 /**
- * An alternative to [androidx.compose.material.Surface] utilizing
- * [com.example.jetsnack.ui.theme.JetsnackColors]
+ * A lightweight alternative to [androidx.compose.material.Surface] that draws an elevation overlay,
+ * defaulting to the app's semantic surface tokens so it adapts to light/dark mode.
  */
 @Composable
 fun Surface(
     modifier: Modifier = Modifier,
     shape: Shape = RectangleShape,
-    color: Color = Yellow500,
-    contentColor: Color = Black900,
+    color: Color = RmTheme.colors.surface,
+    contentColor: Color = RmTheme.colors.onSurface,
     border: BorderStroke? = null,
     elevation: Dp = 0.dp,
     content: @Composable () -> Unit

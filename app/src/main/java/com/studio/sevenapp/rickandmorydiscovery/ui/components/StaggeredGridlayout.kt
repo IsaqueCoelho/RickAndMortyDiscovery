@@ -23,7 +23,10 @@ fun StaggeredVerticalGrid(
 
         val columns = ceil(constraints.maxWidth / maxColumnWidth.toPx()).toInt()
         val columnWidth = constraints.maxWidth / columns
-        val itemConstraints = constraints.copy(maxWidth = columnWidth)
+        // Relax minWidth: when the grid is given a tight width (e.g. via fillMaxWidth), the
+        // parent's minWidth can exceed a single column's width and would make this an invalid
+        // Constraints (maxWidth < minWidth). Each item is sized to exactly one column.
+        val itemConstraints = constraints.copy(minWidth = 0, maxWidth = columnWidth)
         val colHeights = IntArray(columns) { 0 } // track each column's height
 
         val placeables = measurables.map { measurable ->

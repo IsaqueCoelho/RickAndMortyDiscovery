@@ -1,17 +1,16 @@
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.hilt)
 }
 
 android {
-    compileSdk = 31
-    buildToolsVersion = "30.0.3"
+    namespace = "com.studio.sevenapp.data"
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 27
-        targetSdk = 31
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -27,42 +26,35 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
+}
+
+kapt {
+    correctErrorTypes = true
 }
 
 dependencies {
     implementation(project(":domain"))
 
-    implementation("com.google.dagger:hilt-android:2.42")
-    kapt("com.google.dagger:hilt-android-compiler:2.42")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
-    implementation("androidx.core:core-ktx:1.3.2")
+    implementation(libs.androidx.core.ktx)
 
-    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.retrofit.converter.scalars)
+    implementation(libs.gson)
 
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.google.code.gson:gson:2.8.6")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
-
-
-    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
-
-
-    implementation("io.mockk:mockk:1.9.3")
-    implementation("org.mockito:mockito-core:3.1.0")
-    implementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
-    implementation("org.powermock:powermock-module-junit4:2.0.4")
-    implementation("org.powermock:powermock-module-junit4-rule:2.0.4")
-    implementation("org.powermock:powermock-api-mockito2:2.0.4")
-
-
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.mockito:mockito-core:3.1.0")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.mockito.core)
+    androidTestImplementation(libs.androidx.test.ext.junit)
 }
