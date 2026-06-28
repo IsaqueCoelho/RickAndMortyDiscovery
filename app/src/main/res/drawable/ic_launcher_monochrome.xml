@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Portal ring -->
+    <path
+        android:pathData="M26,54 a28,28 0 1,0 56,0 a28,28 0 1,0 -56,0 Z"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="7"
+        android:fillColor="#00000000" />
+
+    <!-- Swirl -->
+    <path
+        android:pathData="M54,34 C68,38 72,55 58,62 C49,66 44,57 51,52"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+
+    <!-- Core -->
+    <path
+        android:pathData="M50,54 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 Z"
+        android:fillColor="#FFFFFFFF" />
+</vector>
