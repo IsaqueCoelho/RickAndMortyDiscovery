@@ -6,8 +6,8 @@ import com.studio.sevenapp.data.mapper.CharacterMapper
 import com.studio.sevenapp.data.service.CharacterService
 import com.studio.sevenapp.domain.character.BodyQueryEnum
 import com.studio.sevenapp.domain.character.CharacterRepository
-import com.studio.sevenapp.domain.model.Character
 import com.studio.sevenapp.domain.model.CharacterInDetail
+import com.studio.sevenapp.domain.model.CharacterPage
 import okhttp3.MediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 import javax.inject.Inject
@@ -24,9 +24,9 @@ constructor(
     private val characterInDetailMapper: CharacterInDetailMapper
 ) : CharacterRepository {
 
-    override suspend fun getCharacters(): List<Character> {
+    override suspend fun getCharacters(page: Int): CharacterPage {
 
-        val body = BodyQueryEnum.GET_CHARACTERS_QUERY.value
+        val body = BodyQueryEnum.GET_CHARACTERS_QUERY.value.format(page)
         val queyParam = BodyQueryEnum.BODY_QUERY_PARAM.value
 
         // Pode dar problema no futuro =)
@@ -37,9 +37,12 @@ constructor(
 
         val jsonInString: String = characterService.get(bodyRequest)
 
-        val characterDtoList = characterMapper.fromStringJsonToDtoList(jsonInString)
+        val response = characterMapper.fromStringJsonToResponse(jsonInString)
 
-        return characterMapper.fromDtoListToDomain(characterDtoList)
+        return CharacterPage(
+            characters = characterMapper.fromDtoListToDomain(response.results),
+            nextPage = response.info.next
+        )
     }
 
     override suspend fun getCharacterDetail(id: Int): CharacterInDetail {

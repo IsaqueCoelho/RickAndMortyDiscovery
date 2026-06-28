@@ -3,8 +3,8 @@ package com.studio.sevenapp.data.mapper
 import android.annotation.SuppressLint
 import com.google.gson.Gson
 import com.google.gson.JsonParser
-import com.google.gson.reflect.TypeToken
 import com.studio.sevenapp.data.model.CharacterDto
+import com.studio.sevenapp.data.model.CharacterResponseObject
 import com.studio.sevenapp.domain.model.Character
 import com.studio.sevenapp.domain.model.StatusEnum
 import java.util.*
@@ -32,17 +32,15 @@ class CharacterMapper(
         )
     }
 
-    fun fromStringJsonToDtoList(json: String): List<CharacterDto> {
+    fun fromStringJsonToResponse(json: String): CharacterResponseObject {
 
         val jsonObject = JsonParser.parseString(json).asJsonObject
 
-        val jsonArray = jsonObject.getAsJsonObject("data")
+        val charactersObject = jsonObject.getAsJsonObject("data")
             .getAsJsonObject("characters")
-            .getAsJsonArray("results").toString()
+            .toString()
 
-        val listType = object : TypeToken<List<CharacterDto>>() {}.type
-
-        return gson.fromJson(jsonArray, listType)
+        return gson.fromJson(charactersObject, CharacterResponseObject::class.java)
     }
 
     fun fromDtoListToDomain(dtoList: List<CharacterDto>) : List<Character>{

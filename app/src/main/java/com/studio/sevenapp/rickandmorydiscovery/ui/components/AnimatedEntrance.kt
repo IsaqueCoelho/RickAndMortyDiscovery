@@ -14,9 +14,14 @@ import androidx.compose.ui.graphics.graphicsLayer
 import com.studio.sevenapp.rickandmorydiscovery.ui.theme.RmMotion
 import kotlinx.coroutines.delay
 
+/** Cap on staggered slots so an appended page (or a long episode list) keeps a short cascade. */
+private const val StaggerSlots = 12
+
 /**
  * Reveals [content] with a staggered fade + rise + scale. [index] offsets the start so a grid of
- * items cascades into place instead of popping in all at once.
+ * items cascades into place instead of popping in all at once. The delay wraps every
+ * [StaggerSlots] items so items far down a list — or in a freshly appended page — still animate
+ * promptly instead of waiting on an ever-growing delay.
  */
 @Composable
 fun AnimatedEntrance(
@@ -26,7 +31,7 @@ fun AnimatedEntrance(
 ) {
     var visible by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) {
-        delay((index * RmMotion.StaggerStep).toLong())
+        delay(((index % StaggerSlots) * RmMotion.StaggerStep).toLong())
         visible = true
     }
 

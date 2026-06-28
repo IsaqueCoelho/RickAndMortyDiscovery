@@ -60,6 +60,7 @@ import com.studio.sevenapp.rickandmorydiscovery.model.PEpisode
 import com.studio.sevenapp.rickandmorydiscovery.model.PLocation
 import com.studio.sevenapp.rickandmorydiscovery.ui.components.AnimatedEntrance
 import com.studio.sevenapp.rickandmorydiscovery.ui.components.Divider
+import com.studio.sevenapp.rickandmorydiscovery.ui.components.MessageBanner
 import com.studio.sevenapp.rickandmorydiscovery.ui.components.PortalRing
 import com.studio.sevenapp.rickandmorydiscovery.ui.components.StatusPill
 import com.studio.sevenapp.rickandmorydiscovery.ui.components.Surface
@@ -110,6 +111,12 @@ fun CharacterDetailScreen(
             CharacterImage(character.image, scroll.value)
         }
         Up(upPress = onBackClick)
+
+        MessageBanner(
+            message = viewModel.userMessage.value,
+            onDismiss = viewModel::clearMessage,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
     }
 }
 
